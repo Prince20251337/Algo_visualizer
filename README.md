@@ -61,12 +61,6 @@ AlgoViz/
 HTML5 • CSS3 • JavaScript (ES6)
 Font Awesome • Google Fonts
 
-▶️ Run Locally
-git clone https://github.com/yourusername/AlgoViz.git
-cd AlgoViz
-
-Open frontend.html in your browser.
-
 🎯 Quick Demo
 
 Sorting Battle
