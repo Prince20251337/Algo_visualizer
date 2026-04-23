@@ -81,6 +81,7 @@ AlgoViz is an interactive educational platform that transforms complex algorithm
 
 AlgoViz/
 ├── LoginPage.html
+
 ├── MainPage.html
 ├── frontend.html
 │
