@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -77,4 +78,809 @@
 <script src="sorting.js"></script>
 
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Algo Viz – Battle Arena | Step-by-Step Mode</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background: #0f172a;
+            color: #e5e7eb;
+            font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #38bdf8;
+            margin-bottom: 8px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            font-size: 1.9rem;
+        }
+        .back-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: #ef4444;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 40px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s;
+            z-index: 1000;
+            font-size: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+        .back-btn:hover {
+            background: #dc2626;
+            transform: scale(1.02);
+        }
+        .controls {
+            background: #1e293b;
+            padding: 18px 22px;
+            border-radius: 28px;
+            display: inline-flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            border: 1px solid #334155;
+            margin-bottom: 25px;
+            backdrop-filter: blur(2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        button, select, .custom-input {
+            padding: 8px 16px;
+            border-radius: 40px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.2s;
+        }
+        button {
+            background: #38bdf8;
+            color: #0f172a;
+        }
+        button:hover {
+            background: #7dd3fc;
+            transform: translateY(-1px);
+        }
+        .stop-btn {
+            background: #f87171;
+            color: white;
+        }
+        .stop-btn:hover {
+            background: #ef4444;
+        }
+        select {
+            background: #334155;
+            color: white;
+            cursor: pointer;
+        }
+        .step-mode-group {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #0f172a;
+            padding: 5px 16px;
+            border-radius: 40px;
+            font-weight: 500;
+        }
+        .step-mode-group input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        .step-btn {
+            background: #a855f7;
+            color: white;
+        }
+        .step-btn:disabled {
+            background: #4a4e6b;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .speed-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #0f172a;
+            padding: 0 14px;
+            border-radius: 40px;
+            font-weight: 500;
+        }
+        input[type="range"] {
+            width: 130px;
+            cursor: pointer;
+        }
+        .custom-area {
+            background: #0f172a;
+            padding: 12px 18px;
+            border-radius: 60px;
+            display: inline-flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #334155;
+        }
+        .custom-input {
+            background: #1e293b;
+            border: 1px solid #475569;
+            color: white;
+            width: 280px;
+            font-family: monospace;
+            font-size: 13px;
+        }
+        .custom-input:focus {
+            outline: none;
+            border-color: #38bdf8;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 28px;
+            max-width: 1400px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        .arena-box {
+            flex: 1;
+            min-width: 320px;
+            background: #1e293b;
+            padding: 20px 15px 18px;
+            border-radius: 28px;
+            border: 2px solid #334155;
+            transition: border 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .winner-border {
+            border-color: #4ade80 !important;
+            box-shadow: 0 0 0 2px rgba(74,222,128,0.4), 0 8px 20px rgba(0,0,0,0.3);
+        }
+        .winner-badge {
+            display: none;
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #4ade80;
+            color: #022c22;
+            padding: 5px 18px;
+            border-radius: 60px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            z-index: 20;
+            white-space: nowrap;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .arena {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            background: #0a0f1e;
+            border-radius: 24px;
+            padding: 18px 12px;
+            margin-bottom: 18px;
+            min-height: 140px;
+            border: 1px solid #2d3a4e;
+        }
+        .num-card {
+            background: linear-gradient(145deg, #2c3e66, #1e2a44);
+            color: #f0f9ff;
+            width: 54px;
+            text-align: center;
+            padding: 12px 0;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            font-family: 'JetBrains Mono', monospace;
+            transition: all 0.1s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            border: 1px solid #3b4e6b;
+        }
+        .num-card.active {
+            background: #fbbf24;
+            color: #0f172a;
+            transform: scale(1.02);
+            border-color: #fde047;
+            box-shadow: 0 0 12px rgba(251,191,36,0.6);
+        }
+        .how-it-works {
+            font-size: 13px;
+            color: #a5b4fc;
+            background: #0f172a;
+            padding: 8px 12px;
+            border-radius: 20px;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            min-height: 60px;
+            text-align: left;
+            border-left: 4px solid #38bdf8;
+        }
+        .complexity-box {
+            font-size: 14px;
+            color: #facc15;
+            font-weight: bold;
+            background: #0f172a;
+            padding: 6px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            display: inline-block;
+        }
+        .stats {
+            background: #020617;
+            padding: 10px 16px;
+            border-radius: 28px;
+            font-family: monospace;
+            font-size: 15px;
+            border: 1px solid #334155;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .stats span {
+            color: #4ade80;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        h3 {
+            text-transform: uppercase;
+            color: #7dd3fc;
+            letter-spacing: 2px;
+            margin: 0 0 12px 0;
+            font-size: 1.3rem;
+        }
+        @media (max-width: 780px) {
+            .num-card { width: 44px; padding: 8px 0; font-size: 1rem; }
+            .controls { gap: 8px; }
+            .custom-input { width: 200px; }
+        }
+    </style>
+</head>
+<body>
+
+<button class="back-btn" onclick="history.back()">← Back</button>
+
+<h1>⚔️ NUMERIC SORT BATTLE</h1>
+
+<div class="controls">
+    <select id="leftAlgo">
+        <option value="bubble">Bubble Sort</option>
+        <option value="selection">Selection Sort</option>
+        <option value="insertion">Insertion Sort</option>
+        <option value="merge">Merge Sort</option>
+        <option value="quick" selected>Quick Sort</option>
+    </select>
+    <span style="font-weight:bold; color:#f472b6;">VS</span>
+    <select id="rightAlgo">
+        <option value="bubble">Bubble Sort</option>
+        <option value="selection">Selection Sort</option>
+        <option value="insertion">Insertion Sort</option>
+        <option value="merge">Merge Sort</option>
+        <option value="quick" selected>Quick Sort</option>
+    </select>
+    <div class="speed-label">
+        <span>⚡ Speed</span>
+        <input type="range" id="speedRange" min="1" max="100" value="75">
+    </div>
+    <div class="step-mode-group">
+        <input type="checkbox" id="stepModeCheckbox">
+        <label for="stepModeCheckbox">⏯️ Step Mode</label>
+        <button id="stepBtn" class="step-btn" disabled>▶ Next Step</button>
+    </div>
+    <button onclick="generateRandomArray()">🎲 RANDOM ARRAY</button>
+    <button onclick="startBattle()" style="background:#4ade80; color:#0a2f1f;">⚔️ START BATTLE</button>
+    <button class="stop-btn" onclick="stopAll()">⏹️ STOP</button>
+</div>
+
+<div class="custom-area">
+    <span>✏️ Custom array (numbers, comma separated):</span>
+    <input type="text" id="customArrayInput" class="custom-input" placeholder="e.g., 42, 17, 8, 99, 23, 5, 12, 77">
+    <button id="applyCustomBtn" onclick="applyCustomArray()">📥 Apply to both</button>
+    <span style="font-size:12px; opacity:0.8;">(min 3, max 28 numbers)</span>
+</div>
+
+<div class="container">
+    <div class="arena-box" id="boxL">
+        <div class="winner-badge" id="badgeL">🏆 WINNER!</div>
+        <h3 id="nameL">Algorithm A</h3>
+        <div id="arenaL" class="arena"></div>
+        <div class="how-it-works" id="stateL">--</div>
+        <div class="complexity-box">⏱️ Time: <span id="timeL">--</span></div>
+        <div class="stats">
+            <span>🔁 Comparisons: <span id="compL">0</span></span>
+            <span>🔄 Swaps / Moves: <span id="swapL">0</span></span>
+        </div>
+    </div>
+
+    <div class="arena-box" id="boxR">
+        <div class="winner-badge" id="badgeR">🏆 WINNER!</div>
+        <h3 id="nameR">Algorithm B</h3>
+        <div id="arenaR" class="arena"></div>
+        <div class="how-it-works" id="stateR">--</div>
+        <div class="complexity-box">⏱️ Time: <span id="timeR">--</span></div>
+        <div class="stats">
+            <span>🔁 Comparisons: <span id="compR">0</span></span>
+            <span>🔄 Swaps / Moves: <span id="swapR">0</span></span>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ---------- GLOBAL STATE ----------
+    let arrayL = [], arrayR = [];
+    let stopRequest = false;
+    let winnerDeclared = false;
+    let activeSortPromise = { L: false, R: false };
+    
+    let stats = {
+        L: { c: 0, s: 0 },
+        R: { c: 0, s: 0 }
+    };
+    
+    // Step mode variables
+    let stepMode = false;
+    let stepBarrierPromise = null;
+    let stepBarrierResolve = null;
+    
+    // Complexity & description mapping
+    const info = {
+        bubble: { comp: "O(n²)", state: "🐟 Bubble: repeatedly steps through list, swaps adjacent if out of order. Large bubbles rise." },
+        selection: { comp: "O(n²)", state: "🎯 Selection: finds minimum element and moves to front, repeats for unsorted part." },
+        insertion: { comp: "O(n²)", state: "📌 Insertion: builds sorted array one element at a time, inserts into correct position." },
+        merge: { comp: "O(n log n)", state: "🧩 Merge: divide & conquer, splits array, sorts halves, merges back." },
+        quick: { comp: "O(n log n)", state: "⚡ Quick: picks pivot, partitions into left< pivot < right, recurses." }
+    };
+    
+    // Helper: create a new step barrier promise
+    function resetStepBarrier() {
+        if (stepBarrierResolve) {
+            // If there's an existing unresolved promise, resolve it (cleanup)
+            stepBarrierResolve();
+        }
+        stepBarrierPromise = new Promise(resolve => {
+            stepBarrierResolve = resolve;
+        });
+    }
+    
+    // Step button click handler
+    function advanceStep() {
+        if (!stepMode) return;
+        if (stepBarrierResolve) {
+            stepBarrierResolve();      // release all waiting sleep calls
+            resetStepBarrier();        // create new barrier for next step
+        }
+        // re-disable step button until next sleep awaits (will be re-enabled by sleep)
+        const stepBtn = document.getElementById('stepBtn');
+        stepBtn.disabled = true;
+    }
+    
+    // Sleep: respects speed and step mode
+    async function sleep() {
+        if (stopRequest) return;
+        const ms = Math.max(10, 110 - document.getElementById('speedRange').value);
+        
+        if (stepMode) {
+            // Step mode: wait for the barrier to be resolved
+            if (!stepBarrierPromise) resetStepBarrier();
+            const stepBtn = document.getElementById('stepBtn');
+            stepBtn.disabled = false;   // enable step button so user can click
+            await stepBarrierPromise;
+            stepBtn.disabled = true;    // after advancing, disable until next sleep
+            return;
+        } else {
+            // Normal mode: simple delay
+            await new Promise(r => setTimeout(r, ms));
+        }
+    }
+    
+    // Update step button state based on stepMode and sorting activity
+    function updateStepButtonState() {
+        const stepBtn = document.getElementById('stepBtn');
+        const isSortingActive = activeSortPromise.L || activeSortPromise.R;
+        stepBtn.disabled = !stepMode || !isSortingActive;
+        if (!stepMode) stepBtn.disabled = true;
+    }
+    
+    // Toggle step mode (event listener)
+    function setupStepModeToggle() {
+        const checkbox = document.getElementById('stepModeCheckbox');
+        checkbox.addEventListener('change', (e) => {
+            stepMode = checkbox.checked;
+            if (!stepMode) {
+                // If step mode turned off during sorting, release any waiting barrier to let it continue
+                if (stepBarrierResolve) {
+                    stepBarrierResolve();
+                    resetStepBarrier();  // clean up
+                }
+                const stepBtn = document.getElementById('stepBtn');
+                stepBtn.disabled = true;
+            } else {
+                // If step mode enabled while sorting is active, create fresh barrier
+                if (activeSortPromise.L || activeSortPromise.R) {
+                    resetStepBarrier();
+                    updateStepButtonState();
+                } else {
+                    // no active sorting, nothing to step
+                    document.getElementById('stepBtn').disabled = true;
+                }
+            }
+        });
+    }
+    
+    // ---------- VISUALIZATION ----------
+    function draw(side, arr, activeIndices = []) {
+        const arenaDiv = document.getElementById('arena' + side);
+        if (!arenaDiv) return;
+        arenaDiv.innerHTML = '';
+        for (let i = 0; i < arr.length; i++) {
+            const card = document.createElement('div');
+            card.className = 'num-card';
+            if (activeIndices && activeIndices.includes(i)) {
+                card.classList.add('active');
+            }
+            card.textContent = arr[i];
+            arenaDiv.appendChild(card);
+        }
+    }
+    
+    function updateStatsUI() {
+        document.getElementById('compL').innerText = stats.L.c;
+        document.getElementById('swapL').innerText = stats.L.s;
+        document.getElementById('compR').innerText = stats.R.c;
+        document.getElementById('swapR').innerText = stats.R.s;
+    }
+    
+    function resetBattleState(keepArray = false) {
+        stopRequest = true;
+        // wait a tiny moment to let ongoing sleeps finish
+        setTimeout(() => {
+            if (!keepArray) {
+                // actual reset logic called from setArraysAndReset
+            }
+        }, 10);
+        winnerDeclared = false;
+        document.querySelectorAll('.winner-badge').forEach(b => b.style.display = 'none');
+        document.querySelectorAll('.arena-box').forEach(b => b.classList.remove('winner-border'));
+        
+        // If step mode is active, release any pending barrier to avoid hanging
+        if (stepBarrierResolve) {
+            stepBarrierResolve();
+            resetStepBarrier();
+        }
+        updateStepButtonState();
+    }
+    
+    function setArraysAndReset(newArray) {
+        resetBattleState();
+        arrayL = [...newArray];
+        arrayR = [...newArray];
+        stats = { L: { c: 0, s: 0 }, R: { c: 0, s: 0 } };
+        updateStatsUI();
+        draw('L', arrayL, []);
+        draw('R', arrayR, []);
+        stopRequest = false;
+        winnerDeclared = false;
+        // update algorithm info texts
+        const leftVal = document.getElementById('leftAlgo').value;
+        const rightVal = document.getElementById('rightAlgo').value;
+        document.getElementById('nameL').innerText = document.getElementById('leftAlgo').options[document.getElementById('leftAlgo').selectedIndex].text;
+        document.getElementById('nameR').innerText = document.getElementById('rightAlgo').options[document.getElementById('rightAlgo').selectedIndex].text;
+        document.getElementById('timeL').innerText = info[leftVal].comp;
+        document.getElementById('timeR').innerText = info[rightVal].comp;
+        document.getElementById('stateL').innerHTML = info[leftVal].state;
+        document.getElementById('stateR').innerHTML = info[rightVal].state;
+        
+        // reset step barrier if step mode is on
+        if (stepMode) {
+            resetStepBarrier();
+        }
+        updateStepButtonState();
+    }
+    
+    function generateRandomArray() {
+        const size = Math.floor(Math.random() * 16) + 12;
+        const randomArr = Array.from({ length: size }, () => Math.floor(Math.random() * 180) + 25);
+        setArraysAndReset(randomArr);
+    }
+    
+    function applyCustomArray() {
+        const raw = document.getElementById('customArrayInput').value.trim();
+        if (!raw) {
+            alert("Please enter numbers separated by commas, e.g., 12, 5, 88, 23");
+            return;
+        }
+        const parts = raw.split(',').map(s => s.trim()).filter(s => s !== "");
+        const numbers = [];
+        for (let part of parts) {
+            const num = Number(part);
+            if (isNaN(num)) {
+                alert(`Invalid number: "${part}". Use integers only.`);
+                return;
+            }
+            numbers.push(num);
+        }
+        if (numbers.length < 2) {
+            alert("At least 2 numbers required for sorting battle!");
+            return;
+        }
+        if (numbers.length > 32) {
+            alert("Maximum 32 numbers allowed for clean visualization.");
+            return;
+        }
+        setArraysAndReset(numbers);
+        document.getElementById('customArrayInput').value = numbers.join(', ');
+    }
+    
+    function declareWinner(side) {
+        if (!winnerDeclared && !stopRequest) {
+            winnerDeclared = true;
+            document.getElementById(`badge${side}`).style.display = 'block';
+            document.getElementById(`box${side}`).classList.add('winner-border');
+        }
+    }
+    
+    function stopAll() {
+        stopRequest = true;
+        // resolve step barrier if waiting
+        if (stepBarrierResolve) {
+            stepBarrierResolve();
+            resetStepBarrier();
+        }
+        updateStepButtonState();
+    }
+    
+    // ---------- SORTING ALGORITHMS (with step awareness) ----------
+    async function runSortAlgorithm(side, arr, algo) {
+        try {
+            if (algo === 'bubble') await bubbleSort(arr, side);
+            else if (algo === 'selection') await selectionSort(arr, side);
+            else if (algo === 'insertion') await insertionSort(arr, side);
+            else if (algo === 'quick') await quickSort(arr, 0, arr.length - 1, side);
+            else if (algo === 'merge') await mergeSortWrapper(arr, 0, arr.length - 1, side);
+        } catch(e) { /* ignore if stop */ }
+        
+        if (!stopRequest) {
+            draw(side, arr, []);
+            declareWinner(side);
+        }
+    }
+    
+    async function bubbleSort(arr, side) {
+        for (let i = 0; i < arr.length && !stopRequest; i++) {
+            for (let j = 0; j < arr.length - i - 1 && !stopRequest; j++) {
+                stats[side].c++;
+                updateStatsUI();
+                draw(side, arr, [j, j+1]);
+                await sleep();
+                if (arr[j] > arr[j+1]) {
+                    [arr[j], arr[j+1]] = [arr[j+1], arr[j]];
+                    stats[side].s++;
+                    updateStatsUI();
+                    draw(side, arr, [j, j+1]);
+                    await sleep();
+                }
+            }
+        }
+    }
+    
+    async function selectionSort(arr, side) {
+        for (let i = 0; i < arr.length && !stopRequest; i++) {
+            let minIdx = i;
+            for (let j = i+1; j < arr.length && !stopRequest; j++) {
+                stats[side].c++;
+                draw(side, arr, [j, minIdx]);
+                await sleep();
+                if (arr[j] < arr[minIdx]) minIdx = j;
+                updateStatsUI();
+            }
+            if (minIdx !== i) {
+                [arr[i], arr[minIdx]] = [arr[minIdx], arr[i]];
+                stats[side].s++;
+                updateStatsUI();
+                draw(side, arr, [i, minIdx]);
+                await sleep();
+            } else {
+                draw(side, arr, [i]);
+                await sleep();
+            }
+        }
+    }
+    
+    async function insertionSort(arr, side) {
+        for (let i = 1; i < arr.length && !stopRequest; i++) {
+            let key = arr[i];
+            let j = i-1;
+            while (j >= 0 && arr[j] > key && !stopRequest) {
+                stats[side].c++;
+                arr[j+1] = arr[j];
+                stats[side].s++;
+                updateStatsUI();
+                draw(side, arr, [j, j+1]);
+                await sleep();
+                j--;
+            }
+            arr[j+1] = key;
+            draw(side, arr, [j+1]);
+            await sleep();
+        }
+    }
+    
+    async function quickSort(arr, low, high, side) {
+        if (stopRequest || low >= high) return;
+        let pivotIdx = await partition(arr, low, high, side);
+        await quickSort(arr, low, pivotIdx - 1, side);
+        await quickSort(arr, pivotIdx + 1, high, side);
+    }
+    
+    async function partition(arr, low, high, side) {
+        let pivot = arr[high];
+        let i = low;
+        for (let j = low; j < high && !stopRequest; j++) {
+            stats[side].c++;
+            draw(side, arr, [j, high]);
+            await sleep();
+            if (arr[j] < pivot) {
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+                stats[side].s++;
+                updateStatsUI();
+                draw(side, arr, [i, j]);
+                await sleep();
+                i++;
+            }
+            updateStatsUI();
+        }
+        [arr[i], arr[high]] = [arr[high], arr[i]];
+        stats[side].s++;
+        updateStatsUI();
+        draw(side, arr, [i, high]);
+        await sleep();
+        return i;
+    }
+    
+    async function mergeSortWrapper(arr, l, r, side) {
+        if (stopRequest || l >= r) return;
+        const mid = Math.floor((l + r) / 2);
+        await mergeSortWrapper(arr, l, mid, side);
+        await mergeSortWrapper(arr, mid + 1, r, side);
+        await merge(arr, l, mid, r, side);
+    }
+    
+    async function merge(arr, left, mid, right, side) {
+        let leftArr = arr.slice(left, mid+1);
+        let rightArr = arr.slice(mid+1, right+1);
+        let i = 0, j = 0, k = left;
+        while (i < leftArr.length && j < rightArr.length && !stopRequest) {
+            stats[side].c++;
+            updateStatsUI();
+            if (leftArr[i] <= rightArr[j]) {
+                arr[k] = leftArr[i];
+                i++;
+            } else {
+                arr[k] = rightArr[j];
+                j++;
+            }
+            stats[side].s++;
+            updateStatsUI();
+            draw(side, arr, [k]);
+            await sleep();
+            k++;
+        }
+        while (i < leftArr.length && !stopRequest) {
+            arr[k] = leftArr[i];
+            stats[side].s++;
+            draw(side, arr, [k]);
+            await sleep();
+            i++; k++;
+        }
+        while (j < rightArr.length && !stopRequest) {
+            arr[k] = rightArr[j];
+            stats[side].s++;
+            draw(side, arr, [k]);
+            await sleep();
+            j++; k++;
+        }
+        updateStatsUI();
+    }
+    
+    // ---------- BATTLE START ----------
+    async function startBattle() {
+        if ((activeSortPromise.L || activeSortPromise.R) && !stopRequest) {
+            stopAll();
+            await new Promise(r => setTimeout(r, 100));
+        }
+        stopRequest = false;
+        winnerDeclared = false;
+        document.querySelectorAll('.winner-badge').forEach(b => b.style.display = 'none');
+        document.querySelectorAll('.arena-box').forEach(b => b.classList.remove('winner-border'));
+        stats = { L: { c: 0, s: 0 }, R: { c: 0, s: 0 } };
+        updateStatsUI();
+        draw('L', arrayL, []);
+        draw('R', arrayR, []);
+        
+        const leftAlgo = document.getElementById('leftAlgo').value;
+        const rightAlgo = document.getElementById('rightAlgo').value;
+        
+        // fresh copies to avoid any cross reference
+        const leftArr = [...arrayL];
+        const rightArr = [...arrayR];
+        arrayL = leftArr;
+        arrayR = rightArr;
+        
+        activeSortPromise.L = true;
+        activeSortPromise.R = true;
+        updateStepButtonState();
+        
+        if (stepMode) {
+            resetStepBarrier();  // fresh barrier for step-by-step
+        }
+        
+        const leftTask = runSortAlgorithm('L', arrayL, leftAlgo);
+        const rightTask = runSortAlgorithm('R', arrayR, rightAlgo);
+        
+        await Promise.allSettled([leftTask, rightTask]);
+        
+        activeSortPromise.L = false;
+        activeSortPromise.R = false;
+        draw('L', arrayL, []);
+        draw('R', arrayR, []);
+        updateStepButtonState();
+        // if step barrier still exists, resolve it to avoid hanging (clean)
+        if (stepBarrierResolve) {
+            stepBarrierResolve();
+            stepBarrierPromise = null;
+            stepBarrierResolve = null;
+        }
+    }
+    
+    // update algorithm info when dropdowns change
+    function updateAlgorithmMeta() {
+        if (stopRequest) return;
+        const leftVal = document.getElementById('leftAlgo').value;
+        const rightVal = document.getElementById('rightAlgo').value;
+        document.getElementById('nameL').innerText = document.getElementById('leftAlgo').options[document.getElementById('leftAlgo').selectedIndex].text;
+        document.getElementById('nameR').innerText = document.getElementById('rightAlgo').options[document.getElementById('rightAlgo').selectedIndex].text;
+        document.getElementById('timeL').innerText = info[leftVal].comp;
+        document.getElementById('timeR').innerText = info[rightVal].comp;
+        document.getElementById('stateL').innerHTML = info[leftVal].state;
+        document.getElementById('stateR').innerHTML = info[rightVal].state;
+        draw('L', arrayL, []);
+        draw('R', arrayR, []);
+    }
+    
+    // Initialization
+    function init() {
+        const defaultArr = [64, 23, 85, 12, 47, 93, 31, 58, 19, 77, 5, 44, 68];
+        setArraysAndReset(defaultArr);
+        document.getElementById('customArrayInput').value = defaultArr.join(', ');
+        setupStepModeToggle();
+        document.getElementById('stepBtn').addEventListener('click', advanceStep);
+        document.getElementById('leftAlgo').addEventListener('change', updateAlgorithmMeta);
+        document.getElementById('rightAlgo').addEventListener('change', updateAlgorithmMeta);
+    }
+    
+    init();
+    window.generateRandomArray = generateRandomArray;
+    window.applyCustomArray = applyCustomArray;
+    window.startBattle = startBattle;
+    window.stopAll = stopAll;
+</script>
+</body>
+>>>>>>> ac33e85e565cdd28759fe35863c24954cf770617
 </html>

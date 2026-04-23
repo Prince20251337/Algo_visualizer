@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algorithm Realms - AlgoViz</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+*{margin:0; padding:0; box-sizing:border-box;}
+body{background:#020617; color:#e5e7eb; font-family:'Share Tech Mono', monospace; min-height:100vh;}
+
+/* ===== GRID EFFECT ===== */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(34,240,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34,240,255,0.05) 1px, transparent 1px);
+  background-size:40px 40px;
+  pointer-events:none;
+}
+
+/* ===== NAVBAR ===== */
+.navbar{
+  height:70px;
+  background:#020617;
+  border-bottom:1px solid rgba(34,240,255,.25);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 40px;
+  position: relative;
+  z-index: 10;
+}
+
+.logo{
+  font-family:Orbitron;
+  font-size:22px;
+  letter-spacing:2px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.logo .blue{color:#22f0ff;}
+.logo .white{color:#ffffff;}
+
+.nav-links a{
+  color:#22f0ff;
+  text-decoration:none;
+  font-family:Orbitron;
+  letter-spacing:2px;
+  border-bottom:2px solid #22f0ff;
+  padding-bottom:5px;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  color:#a855f7;
+  border-bottom-color:#a855f7;
+  text-shadow: 0 0 10px rgba(168,85,247,0.7);
+}
+
+/* ===== BACK BUTTON STYLE ===== */
+.back-btn {
+  background: rgba(34, 240, 255, 0.1);
+  color: #22f0ff;
+  border: 2px solid #22f0ff;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+}
+
+.back-btn:hover {
+  background: #22f0ff;
+  color: #020617;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(34, 240, 255, 0.3);
+}
+
+/* ===== HEADER ===== */
+.header{text-align:center; margin-top:60px; position: relative; z-index: 10;}
+.header h1{font-family:Orbitron; font-size:56px; letter-spacing:4px;}
+.header .cyan{color:#22f0ff; text-shadow:0 0 20px #22f0ff;}
+.header .white{color:#ffffff;}
+.header p{margin-top:15px; color:#9ca3af; font-size:16px;}
+
+/* ===== REALMS GRID (2x2) ===== */
+.realms{
+  margin:70px auto;
+  width:95%;
+  max-width:1100px;
+  display:grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap:35px;
+  position: relative;
+  z-index: 10;
+}
+
+/* ===== ADDITIONAL PRACTICE CARD ===== */
+.practice-section {
+  margin: 70px auto;
+  width: 95%;
+  max-width: 1100px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+}
+
+.practice-card {
+  background:#020617;
+  border-radius:14px;
+  padding:40px;
+  min-height:230px;
+  width: 100%;
+  max-width: 800px;
+  position:relative;
+  transition:.4s;
+  cursor: pointer;
+  border: 2px solid #22c55e; /* CHANGED FROM ORANGE TO GREEN */
+  text-align: center;
+}
+
+.practice-card:hover {
+  transform:translateY(-8px);
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.5) !important; /* MATCHING GREEN GLOW */
+}
+
+.practice-card .icon {
+  font-size:42px;
+  margin-bottom:20px;
+  color:#22c55e; /* CHANGED TO GREEN */
+}
+
+.practice-card h2 {
+  font-family:Orbitron;
+  margin-bottom:15px;
+  letter-spacing:2px;
+  font-size:32px;
+  color:#ffffff;
+}
+
+.practice-card p {
+  font-size:16px;
+  color:#cbd5f5;
+  margin-bottom:25px;
+  line-height: 1.6;
+}
+
+.practice-card .tags {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.practice-card .tags span {
+  display:inline-block;
+  padding:8px 16px;
+  font-size:14px;
+  border-radius:20px;
+  border:1px solid rgba(34, 197, 94, 0.3); /* CHANGED TO GREEN */
+  background: rgba(34, 197, 94, 0.1); /* CHANGED TO GREEN */
+  color: #4ade80; /* LIGHTER GREEN */
+}
+
+.realm{
+  background:#020617;
+  border-radius:14px;
+  padding:35px;
+  min-height:230px;
+  position:relative;
+  transition:.4s;
+  cursor: pointer;
+}
+
+.realm:hover{
+  transform:translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ===== ICON ===== */
+.icon{font-size:34px; margin-bottom:18px;}
+
+/* ===== COLORS & GLOW ===== */
+.sorting{border:2px solid #22f0ff;}
+.searching{border:2px solid #22c55e;}
+.graph{border:2px solid #a855f7;}
+.timecomplexity{border:2px solid #f59e0b;}
+
+.sorting .icon{color:#22f0ff;}
+.searching .icon{color:#22c55e;}
+.graph .icon{color:#a855f7;}
+.timecomplexity .icon{color:#f59e0b;}
+
+.sorting:hover { box-shadow: 0 0 20px rgba(34, 240, 255, 0.5) !important; }
+.searching:hover { box-shadow: 0 0 20px rgba(34, 197, 94, 0.5) !important; }
+.graph:hover { box-shadow: 0 0 20px rgba(168, 85, 247, 0.5) !important; }
+.timecomplexity:hover { box-shadow: 0 0 20px rgba(245, 158, 11, 0.5) !important; }
+
+/* ===== REALM CONTENT ===== */
+.realm h2{font-family:Orbitron; margin-bottom:10px; letter-spacing:2px;}
+.realm p{font-size:14px; color:#cbd5f5; margin-bottom:18px;}
+
+/* ===== TAGS ===== */
+.tags span{
+  display:inline-block;
+  margin:5px 6px 0 0;
+  padding:6px 12px;
+  font-size:12px;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,.2);
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 768px) {
+  .realms { grid-template-columns: 1fr; }
+  .header h1 { font-size: 38px; }
+  .practice-card { padding: 25px; }
+  .practice-card h2 { font-size: 26px; }
+  .navbar { padding: 0 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+  <div class="logo">
+    <i class="fas fa-brain"></i>
+    <span class="blue">Algo</span><span class="white">Viz</span> <!-- CHANGED FROM AlgoWars TO AlgoViz -->
+  </div>
+  <div class="nav-links">
+    <a href="frontend.html" id="homeBtn"><i class="fas fa-house"></i> Home</a> <!-- CHANGED TO GO TO FRONTEND.HTML -->
+  </div>
+</nav>
+
+<section class="header">
+  <h1>
+    <span class="cyan">ALGORITHM</span>
+    <span class="white">REALMS</span>
+  </h1>
+  <p>Choose your battlefield. Each realm holds unique challenges and algorithms to master.</p>
+</section>
+
+<section class="realms">
+
+  <div class="realm sorting" id="sortingRealm">
+    <div class="icon"><i class="fas fa-sort"></i></div>
+    <h2>Sorting Realm</h2>
+    <p>Master the art of ordering chaos.</p>
+    <div class="tags">
+      <span>Bubble Sort</span>
+      <span>Merge Sort</span>
+      <span>Quick Sort</span>
+      <span>Heap Sort</span>
+    </div>
+  </div>
+
+  <div class="realm searching" id="searchingRealm">
+    <div class="icon"><i class="fas fa-search"></i></div>
+    <h2>Searching Zone</h2>
+    <p>Find the needle in the haystack.</p>
+    <div class="tags">
+      <span>Linear Search</span>
+      <span>Binary Search</span>
+      <span>Jump Search</span>
+    </div>
+  </div>
+
+  <div class="realm graph" id="graphRealm">
+    <div class="icon"><i class="fas fa-project-diagram"></i></div>
+    <h2>Graph City</h2>
+    <p>Traverse nodes and shortest paths.</p>
+    <div class="tags">
+      <span>BFS</span>
+      <span>DFS</span>
+      <span>Dijkstra</span>
+      <span>Kruskal</span>
+    </div>
+  </div>
+
+  <div class="realm timecomplexity" id="timeRealm">
+    <div class="icon"><i class="fas fa-clock"></i></div>
+    <h2>Time Complexity</h2>
+    <p>Analyze efficiency of algorithms.</p>
+    <div class="tags">
+      <span>O(1)</span>
+      <span>O(log n)</span>
+      <span>O(n)</span>
+      <span>O(n²)</span>
+    </div>
+  </div>
+
+</section>
+
+<section class="practice-section">
+  <div class="practice-card" id="practiceRealm">
+    <div class="icon"><i class="fas fa-code"></i></div>
+    <h2>Practice Arena</h2>
+    <p>Complete 50 algorithm challenges. Drag & drop code fragments, analyze time complexity, and master algorithms through interactive puzzles.</p>
+    <div class="tags">
+      <span>50 Levels</span>
+      <span>Drag & Drop</span>
+      <span>Code Assembly</span>
+      <span>Complexity Analysis</span>
+      <span>Interactive Learning</span>
+    </div>
+  </div>
+</section>
+
+<script>
+// Home button functionality - Now goes back to frontend.html (loader page)
+document.getElementById('homeBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    // Add a smooth transition effect
+    document.body.style.opacity = '0.7';
+    document.body.style.transition = 'opacity 0.3s ease';
+    
+    setTimeout(() => {
+        window.location.href = 'frontend.html';
+    }, 300);
+});
+
+// Sorting Realm click handler
+document.getElementById('sortingRealm').addEventListener('click', function() {
+    window.location.href = 'sorting.html';
+});
+
+// Searching Zone click handler
+document.getElementById('searchingRealm').addEventListener('click', function() {
+    window.location.href = 'searching.html';
+});
+
+// Graph City click handler
+document.getElementById('graphRealm').addEventListener('click', function() {
+    window.location.href = 'shortestpath.html';
+});
+
+// Time Complexity click handler
+document.getElementById('timeRealm').addEventListener('click', function() {
+    window.location.href = 'time.html';
+});
+
+// Practice Arena click handler
+document.getElementById('practiceRealm').addEventListener('click', function() {
+    window.location.href = 'practice.html';
+});
+
+// Add smooth hover effects to all cards
+document.querySelectorAll('.realm, .practice-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+        this.style.transition = 'all 0.3s ease';
+    });
+});
+
+// Add keyboard navigation support
+document.addEventListener('keydown', function(e) {
+    // ESC key goes back to home
+    if (e.key === 'Escape') {
+        window.location.href = 'frontend.html';
+    }
+});
+</script>
+
+</body>
+</html>
