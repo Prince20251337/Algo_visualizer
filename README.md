@@ -83,15 +83,21 @@ AlgoViz/
 ├── LoginPage.html
 
 ├── MainPage.html
-├── frontend.html
-│
+
 ├── sorting.html / .css / .js
+
 ├── searching.html / .css / .js
+
 ├── shortestpath.html / .css / .js
+
 ├── time.html / .css / .js
+
 ├── Notations.html / .css / .js
+
 ├── Pseudocode.html / .css / .js
+
 ├── Practice.html / .css / .js
+
 ├── knowledgeTest.html / .css / .js
 │
 ├── assets/
