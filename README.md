@@ -78,3 +78,75 @@ AlgoViz is an interactive educational platform that transforms complex algorithm
 ---
 
 ## 📁 Project Structure
+
+AlgoViz/
+├── LoginPage.html
+├── MainPage.html
+├── frontend.html
+│
+├── sorting.html / .css / .js
+├── searching.html / .css / .js
+├── shortestpath.html / .css / .js
+├── time.html / .css / .js
+├── Notations.html / .css / .js
+├── Pseudocode.html / .css / .js
+├── Practice.html / .css / .js
+├── knowledgeTest.html / .css / .js
+│
+├── assets/
+│ ├── Mainpagepic.webp
+│ └── LoginPage.webp
+
+---
+
+## ▶️ How to Run
+
+### Option 1
+Open `LoginPage.html` directly in your browser
+
+### Option 2 (Recommended)
+Use VS Code Live Server and run `LoginPage.html`
+
+---
+
+## 🎯 Usage Examples
+
+### Sorting Battle
+- Choose algorithms  
+- Start visualization race  
+- Compare performance  
+- Try custom arrays  
+
+### Graph Pathfinder
+- Create nodes and edges  
+- Set start and end points  
+- Run BFS / DFS / Dijkstra  
+- Observe step-by-step execution  
+
+### Quiz Mode
+- Open Time Complexity Arena  
+- Answer MCQs  
+- Get instant feedback  
+- Track progress  
+
+---
+
+## 🎓 Target Audience
+
+- Computer Science students  
+- Teachers and educators  
+- Self-learners  
+- Developers revising DSA  
+
+---
+
+## 🏆 Learning Outcomes
+
+- Visual understanding of algorithms  
+- Better grasp of time complexity  
+- Hands-on problem solving  
+- Strong algorithmic thinking  
+
+---
+
+## ⚡ AlgoViz — Where Algorithms Come Alive
