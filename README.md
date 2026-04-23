@@ -83,16 +83,12 @@ AlgoViz/
 ├── LoginPage.html
 
 ├── MainPage.
-
-├── frontend.html
 │
 ├── sorting.html / .css / .js
 
 ├── searching.html / .css / .js
 
 ├── shortestpath.html / .css / .js
-
-├── time.html / .css / .js
 
 ├── Notations.html / .css / .js
 
@@ -102,6 +98,7 @@ AlgoViz/
 
 ├── knowledgeTest.html / .css / .js
 │
+
 ├── assets/
 
 │ ├── Mainpagepic.webp
