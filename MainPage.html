@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Algorithm Realms - AlgoViz</title>
+
+<!-- Google Fonts: Orbitron for headings, plus modern Inter and Fira Code for readability -->
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="MainPage.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="logo">
+    <i class="fas fa-brain"></i>
+    <span class="blue"> Algo</span><span class="white">Viz</span>
+  </div>
+  <div class="nav-links">
+    <a href="#" id="homeBtn"><i class="fas fa-house"></i> Home</a>
+  </div>
+</nav>
+
+<section class="header">
+  <h1>
+    <span class="cyan">ALGORITHM</span>
+    <span class="white">REALMS</span>
+  </h1>
+  <p>Choose your battlefield. Each realm holds unique challenges and algorithms to master.</p>
+</section>
+
+<!-- UNIFIED REALMS GRID: 8 cards (including Practice Arena & Knowledge Test) -->
+<section class="realms">
+
+  <!-- Sorting Realm -->
+  <div class="realm sorting" id="sortingRealm">
+    <div class="icon"><i class="fas fa-sort"></i></div>
+    <h2>Sorting Realm</h2>
+    <p>Master the art of ordering chaos with classic and advanced sorting techniques.</p>
+    <div class="tags">
+      <span>Bubble Sort</span>
+      <span>Merge Sort</span>
+      <span>Quick Sort</span>
+      <span>Heap Sort</span>
+    </div>
+  </div>
+
+  <!-- Searching Zone -->
+  <div class="realm searching" id="searchingRealm">
+    <div class="icon"><i class="fas fa-search"></i></div>
+    <h2>Searching Zone</h2>
+    <p>Find the needle in the haystack using efficient search strategies.</p>
+    <div class="tags">
+      <span>Linear Search</span>
+      <span>Binary Search</span>
+      <span>Jump Search</span>
+    </div>
+  </div>
+
+  <!-- Graph City -->
+  <div class="realm graph" id="graphRealm">
+    <div class="icon"><i class="fas fa-project-diagram"></i></div>
+    <h2>Graph City</h2>
+    <p>Traverse nodes, find shortest paths, and build spanning trees.</p>
+    <div class="tags">
+      <span>BFS</span>
+      <span>DFS</span>
+      <span>Dijkstra</span>
+      <span>Kruskal</span>
+    </div>
+  </div>
+
+  <!-- Time Complexity Quiz -->
+  <div class="realm timecomplexity" id="timeRealm">
+    <div class="icon"><i class="fas fa-clock"></i></div>
+    <h2>Time Complexity Quiz</h2>
+    <p>Analyze efficiency of algorithms and test your Big-O intuition.</p>
+    <div class="tags">
+      <span>O(1)</span>
+      <span>O(log n)</span>
+      <span>O(n)</span>
+      <span>O(n²)</span>
+    </div>
+  </div>
+
+  <!-- Asymptotic Notations -->
+  <div class="realm notations" id="notationsRealm">
+    <div class="icon"><i class="fas fa-notes-medical"></i></div>
+    <h2>Asymptotic Notations</h2>
+    <p>Decode efficiency with Big-O, Omega & Theta, and growth rates.</p>
+    <div class="tags">
+      <span>Big-O (O)</span>
+      <span>Omega (Ω)</span>
+      <span>Theta (Θ)</span>
+      <span>Little-o</span>
+      <span>Growth Rates</span>
+    </div>
+  </div>
+
+  <!-- Pseudocode Lab -->
+  <div class="realm pseudocode" id="pseudocodeRealm">
+    <div class="icon"><i class="fas fa-code-branch"></i></div>
+    <h2>Pseudocode Lab</h2>
+    <p>Bridge the gap between logic and code with structured algorithm design.</p>
+    <div class="tags">
+      <span>Control Structures</span>
+      <span>Loops & Recursion</span>
+      <span>Algorithm Design</span>
+      <span>Step-by-step</span>
+      <span>Code Translation</span>
+    </div>
+  </div>
+
+  <!-- PRACTICE ARENA (uniform card) -->
+  <div class="realm practice-arena" id="practiceRealm">
+    <div class="icon"><i class="fas fa-code"></i></div>
+    <h2>Practice Arena</h2>
+    <p>Complete 50 algorithm challenges. Drag & drop code fragments, analyze complexity, and master algorithms through interactive puzzles.</p>
+    <div class="tags">
+      <span>50 Levels</span>
+      <span>Drag & Drop</span>
+      <span>Code Assembly</span>
+      <span>Complexity Analysis</span>
+      <span>Interactive Learning</span>
+    </div>
+  </div>
+
+  <!-- KNOWLEDGE TEST CARD — distinct amber color -->
+  <div class="realm knowledge-test" id="knowledgeRealm">
+    <div class="icon"><i class="fas fa-graduation-cap"></i></div>
+    <h2>Knowledge Test</h2>
+    <p>Challenge your understanding with concept-driven quizzes, multiple-choice questions, and algorithm design scenarios.</p>
+    <div class="tags">
+      <span>MCQ Battles</span>
+      <span>Concept Mastery</span>
+      <span>Data Structures</span>
+      <span>Algorithm Analysis</span>
+      <span>Final Assessment</span>
+    </div>
+  </div>
+
+</section>
+
+<script src="MainPage.js"></script>
+
+</body>
+</html>

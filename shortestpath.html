@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Graph Pathfinder · Step-by-step & Custom Graph Editor</title>
+       <link rel="stylesheet" href="shortestpath.css">
+
+</head>
+<body>
+
+<a href="javascript:history.back()" class="back-btn">← Back</a>
+<h1>⚔️ GRAPH PATHFINDER · STEP BY STEP </h1>
+<div class="sub">design your own weighted graph — watch algorithms expand step‑by‑step</div>
+
+<div class="legend">
+    <span><div class="color-badge" style="background:#10b981;"></div> Start</span>
+    <span><div class="color-badge" style="background:#f43f5e;"></div> Goal</span>
+    <span><div class="color-badge" style="background:#3b82f6;"></div> Visited</span>
+    <span><div class="color-badge" style="background:#facc15;"></div> Final Path</span>
+    <span><div class="color-badge" style="background:#ff8c42;"></div> Current frontier/node</span>
+    <span><div class="color-badge" style="background:#334155;"></div> Unexplored</span>
+    <span>🔢 Edge weight (number)</span>
+</div>
+
+<div class="dashboard">
+    <!-- GRAPH CANVAS AREA -->
+    <div class="graph-panel">
+        <canvas id="graphCanvas" width="720" height="540" style="width:100%; height:auto; max-width:720px; aspect-ratio:720/540"></canvas>
+        <div class="toolbar">
+            <button id="modeAddNode" class="mode-btn active-mode">➕ Add Node</button>
+            <button id="modeAddEdge" class="mode-btn">🔗 Add Edge</button>
+            <button id="modeSetStart" class="mode-btn">🟢 Set Start</button>
+            <button id="modeSetEnd" class="mode-btn">🔴 Set Goal</button>
+            <button id="clearGraphBtn" class="danger">🗑 Clear All</button>
+            <button id="randomGraphBtn" class="primary">🎲 Complex Random Graph</button>
+        </div>
+        <!-- algorithm selector & step engine -->
+        <div class="flex-between" style="margin-top: 12px;">
+            <select id="algoSelect">
+                <option value="bfs">🌊 BFS (unweighted, edges count)</option>
+                <option value="dfs">🌀 DFS (unweighted, no guarantee)</option>
+                <option value="dijkstra">⚡ Dijkstra (weighted, optimal cost)</option>
+                <option value="astar">✨ A* (heuristic + weighted, optimal)</option>
+            </select>
+            <button id="computeStepsBtn" class="success">▶️ COMPUTE STEPS</button>
+        </div>
+
+        <!-- STEP NAVIGATION (arrows) -->
+        <div class="step-control">
+            <div class="step-buttons">
+                <button id="stepPrevBtn" disabled>◀ PREV</button>
+                <button id="stepNextBtn" disabled>NEXT ▶</button>
+                <button id="resetStepsBtn" disabled>⟳ RESET</button>
+            </div>
+            <div class="step-info" id="stepCounter">Step 0 / 0</div>
+        </div>
+        <div class="stats" id="statsPanel">
+            📊 <strong>Algorithm:</strong> — &nbsp;| 🧭 <strong>Visited nodes:</strong> — &nbsp;| 🎯 <strong>Path cost:</strong> — &nbsp;| 📏 <strong>Path length:</strong> —
+        </div>
+    </div>
+
+    <!-- right panel: graph data & instructions -->
+    <div class="controls-panel">
+        <h3>📋 GRAPH EDITOR</h3>
+        <p style="font-size:13px">✔ <strong>Add node</strong>: click on canvas.<br>
+        ✔ <strong>Add edge</strong>: click source → click target → enter weight (1-20).<br>
+        ✔ <strong>Set Start/Goal</strong>: click any node.<br>
+        ✔ Drag nodes? (not implemented, but you can reposition by editing coordinates? use random for complex)</p>
+        <button id="centerViewBtn" style="background:#334155;">🎯 Center & Refresh</button>
+        <hr>
+        <div class="flex-between"><strong>Nodes:</strong> <span id="nodeCount">0</span></div>
+        <div class="flex-between"><strong>Edges:</strong> <span id="edgeCount">0</span></div>
+        <div class="edge-list" id="edgeListDisplay">
+            <i>no edges yet</i>
+        </div>
+        <div class="flex-between" style="margin-top: 12px;">
+            <span>⭐ Start: <b id="startIdLabel">—</b></span>
+            <span>🎯 Goal: <b id="endIdLabel">—</b></span>
+        </div>
+        <button id="resetStartEndBtn" style="background:#475569; margin-top: 10px;">⟳ Reset Start/Goal (use first/last node)</button>
+    </div>
+</div>
+
+  <script src="shortestpath.js"></script>
+
+</body>
+</html>

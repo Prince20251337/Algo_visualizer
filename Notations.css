@@ -1,0 +1,219 @@
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      /* Solid background like searching.html – no radial gradient */
+      background: #0f172a;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: #e5e7eb;
+      padding: 2rem 1.25rem;
+      min-height: 100vh;
+    }
+
+    /* ===== RED BACK BUTTON (fixed top-left, matches searching.html style) ===== */
+    .back-red-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1000;
+      background: #dc2626;
+      color: white;
+      border: none;
+      border-radius: 40px;
+      padding: 8px 20px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .back-red-btn i {
+      font-size: 1rem;
+    }
+
+    .back-red-btn:hover {
+      background: #b91c1c;
+      transform: translateY(-2px);
+    }
+
+    .back-red-btn:active {
+      transform: translateY(1px);
+    }
+
+    /* container */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding-top: 8px;
+    }
+
+    /* header – no gradient text, solid cyan */
+    .hero {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      color: #38bdf8;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      text-shadow: 0 0 5px rgba(56,189,248,0.3);
+    }
+
+    .hero p {
+      color: #94a3b8;
+      font-size: 0.9rem;
+      margin-top: 0.4rem;
+    }
+
+    /* control panel – flat card style (matches searching .controls) */
+    .control-panel {
+      background: #1e293b;
+      border-radius: 32px;
+      padding: 1rem 1.8rem;
+      margin-bottom: 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      border: 1px solid #334155;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .size-control {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      background: #0f172a;
+      padding: 0.5rem 1.5rem;
+      border-radius: 60px;
+    }
+
+    .size-control label {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #cbd5e6;
+    }
+
+    .size-control input {
+      background: #334155;
+      border: 1px solid #475569;
+      color: #f1f5f9;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 40px;
+      width: 110px;
+      text-align: center;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      transition: 0.2s;
+    }
+
+    .size-control input:focus {
+      outline: none;
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.3);
+    }
+
+    .badge-note {
+      font-size: 0.75rem;
+      background: #0f172a;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      color: #a0b2da;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* graph card – flat panel, no blur */
+    .graph-card {
+      background: #1e293b;
+      border-radius: 32px;
+      padding: 1rem;
+      border: 1px solid #334155;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    canvas {
+      width: 100%;
+      max-height: 520px;
+      border-radius: 1rem;
+    }
+
+    /* info card – similar to explanation box */
+    .info-card {
+      background: #0f172a;
+      border-radius: 32px;
+      padding: 1rem 1.5rem;
+      margin-top: 1.5rem;
+      border-left: 5px solid #facc15;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .complexity-guide {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.75rem;
+    }
+
+    .complexity-guide span {
+      background: #111827;
+      padding: 0.2rem 0.7rem;
+      border-radius: 20px;
+      font-family: 'Fira Code', monospace;
+    }
+
+    .legend-note {
+      color: #cbd5e6;
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.7rem;
+      color: #6b7280;
+    }
+
+    /* responsive adjustments */
+    @media (max-width: 700px) {
+      body { padding: 1rem; }
+      .control-panel { flex-direction: column; align-items: stretch; }
+      .size-control { justify-content: space-between; }
+      .back-red-btn {
+        top: 12px;
+        left: 12px;
+        padding: 6px 14px;
+        font-size: 0.75rem;
+      }
+      .container {
+        padding-top: 50px;
+      }
+    }
+
+    /* chart.js overrides: match text colors */
+    canvas {
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }

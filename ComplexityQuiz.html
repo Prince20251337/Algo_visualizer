@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AlgoWars – Time Complexity MCQ Game</title>
+<link rel="stylesheet" href="ComplexityQuiz.css">
+
+</head>
+<body>
+
+<!-- Back Button -->
+<button class="back-button" onclick="goBack()">← Back</button>
+
+<h1>⏱️ Algo Viz – Time Complexity MCQ Arena</h1>
+
+<div class="game-box" id="startScreen">
+    <h2>Select Number of Questions</h2>
+    <select id="totalQuestions">
+        <option value="10">10 Questions</option>
+        <option value="20">20 Questions</option>
+        <option value="50">50 Questions</option>
+        <option value="100">100 Questions</option>
+    </select>
+    <br><br>
+    <button onclick="startGame()">Start Game</button>
+</div>
+
+<div class="game-box" id="quizScreen" style="display:none;">
+    <div id="qno"></div>
+    <div class="question" id="question"></div>
+    <div id="options"></div>
+    <button id="okBtn" onclick="submitAnswer()">OK</button>
+    <div id="score"></div>
+    <div id="prev" class="nav-arrow" onclick="prevQuestion()">&#8592;</div>
+    <div id="next" class="nav-arrow" onclick="nextQuestion()">&#8594;</div>
+</div>
+
+<script src="ComplexityQuiz.js"></script>
+
+</body>
+</html>

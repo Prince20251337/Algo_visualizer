@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>AlgoWars – Step-by-Step Search Arena</title>
+      <link rel="stylesheet" href="searching.css">
+
+</head>
+<body>
+
+<button class="back-button" onclick="goBack()">← BACK</button>
+
+<h1>⚔️ ALGOWARS · STEP-BY-STEP SEARCH ARENA 🔍</h1>
+
+<div class="controls">
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;">
+        <div class="ctrl-group"><strong>🔵 LEFT:</strong>
+            <select id="leftAlgo" onchange="updateExplanation('left'); resetStepSide('left')">
+                <option value="binary" selected>Binary Search</option>
+                <option value="sequential">Sequential Search</option>
+                <option value="jump">Jump Search</option>
+                <option value="interpolation">Interpolation Search</option>
+            </select>
+        </div>
+        <div class="ctrl-group"><strong>🔴 RIGHT:</strong>
+            <select id="rightAlgo" onchange="updateExplanation('right'); resetStepSide('right')">
+                <option value="sequential" selected>Sequential Search</option>
+                <option value="binary">Binary Search</option>
+                <option value="jump">Jump Search</option>
+                <option value="interpolation">Interpolation Search</option>
+            </select>
+        </div>
+        <div class="ctrl-group"><strong>🎯 TARGET:</strong> <input type="number" id="target" value="50" style="width:80px"></div>
+        <div class="ctrl-group"><label>✅ <input type="checkbox" id="isSorted" checked onchange="generateArray()"> Sorted Array</label></div>
+        <button onclick="generateArray()">🎲 RANDOM ARRAY</button>
+        <button onclick="startBattle()" style="background:#10b981; color:white;">⚡ AUTO RACE</button>
+    </div>
+    
+    <!-- Custom array input (user can type own numbers) -->
+    <div class="custom-section">
+        <span>📝 <strong>YOUR NUMBERS:</strong></span>
+        <input type="text" id="customArrayInput" placeholder="e.g., 12, 45, 7, 89, 23, 67, 50" style="flex:1; min-width: 220px;">
+        <button id="setCustomBtn" onclick="setCustomArray()">📥 SET CUSTOM</button>
+        <button onclick="sortCurrentArray()" style="background:#f59e0b;">🔽 SORT CURRENT</button>
+        <span id="customArrayStatus" class="status-msg">✨ ready</span>
+    </div>
+    <div class="status-msg" style="margin-top: 8px;">💡 TIP: Use ◀ / ▶ arrows under each panel to step through the search!</div>
+</div>
+
+<div id="winner">🏆 READY? SELECT ALGOS & AUTO RACE or STEP MODE</div>
+
+<div class="arena">
+    <!-- LEFT PANEL (with step arrows) -->
+    <div class="panel">
+        <h3 id="leftDisplayTitle">BINARY SEARCH</h3>
+        <div class="stats">📊 Steps: <span id="leftStepDisplay" class="step-count">0</span></div>
+        <div id="leftArray" class="box-container"></div>
+        
+        <!-- STEP-BY-STEP CONTROLS (ARROWS) -->
+        <div class="step-controls">
+            <button class="step-btn" id="leftPrevBtn" onclick="stepSidePrev('left')">◀ PREV</button>
+            <button class="step-btn" id="leftNextBtn" onclick="stepSideNext('left')">NEXT ▶</button>
+            <button class="step-btn step-reset" id="leftResetBtn" onclick="resetStepSide('left')">⟳ RESET</button>
+            <span style="font-size:0.7rem; background:#00000040; padding:4px 8px; border-radius:20px;">step mode</span>
+        </div>
+        
+        <div class="explain-box">
+            <h2 id="leftTitle">Binary Search</h2>
+            <div id="leftComp" class="complexity-tag">Complexity: O(log n)</div>
+            <p id="leftExplain">Divides sorted array in half each step.</p>
+        </div>
+    </div>
+
+    <!-- RIGHT PANEL (step arrows) -->
+    <div class="panel">
+        <h3 id="rightDisplayTitle">SEQUENTIAL SEARCH</h3>
+        <div class="stats">📊 Steps: <span id="rightStepDisplay" class="step-count">0</span></div>
+        <div id="rightArray" class="box-container"></div>
+        
+        <div class="step-controls">
+            <button class="step-btn" id="rightPrevBtn" onclick="stepSidePrev('right')">◀ PREV</button>
+            <button class="step-btn" id="rightNextBtn" onclick="stepSideNext('right')">NEXT ▶</button>
+            <button class="step-btn step-reset" id="rightResetBtn" onclick="resetStepSide('right')">⟳ RESET</button>
+            <span style="font-size:0.7rem; background:#00000040; padding:4px 8px; border-radius:20px;">step mode</span>
+        </div>
+        
+        <div class="explain-box">
+            <h2 id="rightTitle">Sequential Search</h2>
+            <div id="rightComp" class="complexity-tag">Complexity: O(n)</div>
+            <p id="rightExplain">Checks each element one by one.</p>
+        </div>
+    </div>
+</div>
+
+<script src="searching.js"></script>
+
+</body>
+</html>

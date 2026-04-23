@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>⚡ Algorithm Vault | Pseudocode Arena – Sort, Search, Graph</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="Pseudocode.css">
+
+</head>
+<body>
+
+<button class="back-red-btn" id="globalBackBtn">
+  <i class="fas fa-arrow-left"></i> BACK
+</button>
+
+<div class="vault">
+  <div class="hero">
+    <h1>⚔️ ALGORITHM PSEUDOCODE ARENA</h1>
+    <p>Sorting · Searching · Graph traversal & pathfinding — clean logic, clear complexity</p>
+  </div>
+
+  <!-- ========= SORTING SECTION ========= -->
+  <div class="section-title"> SORTING ALGORITHMS</div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-header sort-header">Bubble Sort</div>
+      <div class="card-body">
+        <div class="pseudocode" style="border-left-color: #4ade80;">
+          procedure bubbleSort(arr, n)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;for i = 0 to n-2 do<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j = 0 to n-i-2 do<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if arr[j] > arr[j+1] then<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap(arr[j], arr[j+1])<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end if<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end for<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;end for<br>
+          end procedure
+        </div>
+        <div class="badge-group">
+          <span class="complexity-badge">⏱️ O(n²) worst</span>
+          <span class="complexity-badge">🔄 Stable</span>
+          <span class="complexity-badge">💾 O(1) space</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header sort-header">Selection Sort</div>
+      <div class="card-body">
+        <div class="pseudocode" style="border-left-color: #4ade80;">
+          procedure selectionSort(arr, n)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;for i = 0 to n-2 do<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;minIdx = i<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for j = i+1 to n-1 do<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if arr[j] < arr[minIdx] then<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;minIdx = j<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end if<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end for<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;swap(arr[i], arr[minIdx])<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;end for<br>
+          end procedure
+        </div>
+        <div class="badge-group">
+          <span class="complexity-badge">📉 O(n²)</span>
+          <span class="complexity-badge">🔁 Unstable</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header sort-header">Insertion Sort</div>
+      <div class="card-body">
+        <div class="pseudocode" style="border-left-color: #4ade80;">
+          procedure insertionSort(arr, n)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;for i = 1 to n-1 do<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key = arr[i]<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j = i-1<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while j >= 0 and arr[j] > key do<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr[j+1] = arr[j]<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;j = j-1<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end while<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arr[j+1] = key<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;end for<br>
+          end procedure
+        </div>
+        <div class="badge-group">
+          <span class="complexity-badge">🟢 O(n) best</span>
+          <span class="complexity-badge">📦 Adaptive</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header sort-header">Merge Sort</div>
+      <div class="card-body">
+        <div class="pseudocode" style="border-left-color: #4ade80;">
+          procedure mergeSort(arr, left, right)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;if left < right then<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mid = (left+right)/2<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mergeSort(arr, left, mid)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mergeSort(arr, mid+1, right)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;merge(arr, left, mid, right)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;end if<br>
+          end procedure
+        </div>
+        <div class="badge-group">
+          <span class="complexity-badge highlight">⭐ O(n log n)</span>
+          <span class="complexity-badge">📦 O(n) extra</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header sort-header">Quick Sort</div>
+      <div class="card-body">
+        <div class="pseudocode" style="border-left-color: #4ade80;">
+          procedure quickSort(arr, low, high)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;if low < high then<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pi = partition(arr, low, high)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quickSort(arr, low, pi-1)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;quickSort(arr, pi+1, high)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;end if<br>
+          end procedure
+        </div>
+        <div class="badge-group">
+          <span class="complexity-badge highlight">⚡ avg O(n log n)</span>
+          <span class="complexity-badge">⚠️ worst O(n²)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========= SEARCHING SECTION ========= -->
+  <div class="section-title"> SEARCHING ALGORITHMS</div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-header search-header">Linear Search</div>
+      <div class="card-body">
+        <div class="pseudocode" style="border-left-color: #facc15;">
+          procedure linearSearch(arr, target)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;for i = 0 to length(arr)-1 do<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if arr[i] == target then return i<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;end for<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;return -1<br>
+          end procedure
+        </div>
+        <div class="badge-group">
+          <span class="complexity-badge">📊 O(n)</span>
+          <span class="complexity-badge">✅ unsorted OK</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header search-header">Binary Search</div>
+      <div class="card-body">
+        <div class="pseudocode" style="border-left-color: #facc15;">
+          procedure binarySearch(arr, target)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;left = 0, right = length(arr)-1<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;while left ≤ right do<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mid = (left+right)//2<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if arr[mid] == target then return mid<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if arr[mid] < target then left = mid+1<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else right = mid-1<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;end while<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;return -1<br>
+          end procedure
+        </div>
+        <div class="badge-group">
+          <span class="complexity-badge highlight">📈 O(log n)</span>
+          <span class="complexity-badge">🔢 requires sorted</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header search-header">Jump Search</div>
+      <div class="card-body">
+        <div class="pseudocode" style="border-left-color: #facc15;">
+          procedure jumpSearch(arr, target)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;n = length(arr), step = floor(√n), prev = 0<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;while arr[min(step,n)-1] < target do<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;prev = step; step += floor(√n)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if prev ≥ n then return -1<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;end while<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;for i = prev to min(step,n)-1 do<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if arr[i] == target then return i<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;end for<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;return -1<br>
+          end procedure
+        </div>
+        <div class="badge-group">
+          <span class="complexity-badge">⏩ O(√n)</span>
+          <span class="complexity-badge">📐 sorted array</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header search-header">Interpolation Search</div>
+      <div class="card-body">
+        <div class="pseudocode" style="border-left-color: #facc15;">
+          procedure interpolationSearch(arr, target)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;low=0, high=len(arr)-1<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;while low ≤ high and target between arr[low] and arr[high] do<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pos = low + ((target-arr[low])*(high-low))/(arr[high]-arr[low])<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if arr[pos] == target then return pos<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if arr[pos] < target then low = pos+1 else high = pos-1<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;end while<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;return -1<br>
+          end procedure
+        </div>
+        <div class="badge-group">
+          <span class="complexity-badge">✨ O(log log n) avg</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========= GRAPH SECTION ========= -->
+  <div class="section-title"> GRAPH & PATHFINDING</div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-header graph-header">BFS (Breadth‑First)</div>
+      <div class="card-body">
+        <div class="pseudocode" style="border-left-color: #c084fc;">
+          procedure BFS(graph, start, goal)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;queue = [start], visited = {start}<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;while queue not empty do<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;node = queue.dequeue()<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if node == goal then return path<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for neighbor in graph[node] do<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if neighbor not visited then<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visited.add(neighbor); queue.enqueue(neighbor)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end if<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end for<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;end while<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;return failure<br>
+          end procedure
+        </div>
+        <div class="badge-group">
+          <span class="complexity-badge">⏱️ O(V+E)</span>
+          <span class="complexity-badge">🎯 shortest path (unweighted)</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header graph-header">DFS (Depth‑First)</div>
+      <div class="card-body">
+        <div class="pseudocode" style="border-left-color: #c084fc;">
+          procedure DFS(graph, node, visited, goal)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;if node == goal then return true<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;visited.add(node)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;for neighbor in graph[node] do<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if neighbor not visited then<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if DFS(graph, neighbor, visited, goal) then return true<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end if<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;end for<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;return false<br>
+          end procedure
+        </div>
+        <div class="badge-group">
+          <span class="complexity-badge">🧠 O(V+E)</span>
+          <span class="complexity-badge">📚 recursion / stack</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header graph-header">Dijkstra (Shortest Path)</div>
+      <div class="card-body">
+        <div class="pseudocode" style="border-left-color: #c084fc;">
+          procedure dijkstra(graph, source)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;dist[source]=0, PQ = priority queue<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;PQ.push((0, source))<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;while PQ not empty do<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(d,u) = PQ.extractMin()<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if d > dist[u] then continue<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for each neighbor v with weight w do<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alt = dist[u] + w<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if alt < dist[v] then<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dist[v] = alt; PQ.push((alt, v))<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end if<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end for<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;end while<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;return dist<br>
+          end procedure
+        </div>
+        <div class="badge-group">
+          <span class="complexity-badge highlight">⏱️ O((V+E) log V)</span>
+          <span class="complexity-badge">🎯 non‑negative weights</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header graph-header">A* Search</div>
+      <div class="card-body">
+        <div class="pseudocode" style="border-left-color: #c084fc;">
+          procedure AStar(start, goal, h)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;openSet = {start}, g[start]=0, f[start]=h(start,goal)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;while openSet not empty do<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;current = node in openSet with min f<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if current == goal then reconstruct path<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;openSet.remove(current)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for neighbor of current do<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tent_g = g[current] + d(current, neighbor)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if tent_g < g[neighbor] then<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cameFrom[neighbor]=current<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;g[neighbor]=tent_g<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;f[neighbor]=g[neighbor]+h(neighbor,goal)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;openSet.add(neighbor)<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end if<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;end for<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;end while<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;return failure<br>
+          end procedure
+        </div>
+        <div class="badge-group">
+          <span class="complexity-badge">🎯 optimal + heuristic</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">
+     Clean pseudocode reference • 
+  </div>
+</div>
+
+  <script src="Pseudocode.js"></script>
+
+</body>
+</html>

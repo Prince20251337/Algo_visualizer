@@ -1,0 +1,178 @@
+let allQuestions = [
+{q:"Time complexity of linear search?", options:["O(1)","O(log n)","O(n)","O(n²)"], answer:"O(n)"},
+{q:"Binary Search worst case?", options:["O(n)","O(log n)","O(n log n)","O(1)"], answer:"O(log n)"},
+{q:"Bubble Sort worst case?", options:["O(n²)","O(n log n)","O(n)","O(log n)"], answer:"O(n²)"},
+{q:"Merge Sort complexity?", options:["O(n²)","O(n log n)","O(n)","O(log n)"], answer:"O(n log n)"},
+{q:"Quick Sort average case?", options:["O(n²)","O(n log n)","O(n)","O(log n)"], answer:"O(n log n)"},
+{q:"Insertion sort best case?", options:["O(n²)","O(n)","O(log n)","O(1)"], answer:"O(n)"},
+{q:"Selection sort time complexity?", options:["O(n²)","O(n)","O(log n)","O(n log n)"], answer:"O(n²)"},
+{q:"DFS complexity?", options:["O(V+E)","O(n²)","O(log n)","O(n)"], answer:"O(V+E)"},
+{q:"BFS complexity?", options:["O(V+E)","O(n²)","O(n)","O(log n)"], answer:"O(V+E)"},
+{q:"Heap Sort complexity?", options:["O(n²)","O(n log n)","O(n)","O(log n)"], answer:"O(n log n)"},
+{q:"Time complexity of for loop running n times?", options:["O(1)","O(n)","O(n²)","O(log n)"], answer:"O(n)"},
+{q:"Nested loop n*i where i=1..n?", options:["O(n)","O(n²)","O(log n)","O(1)"], answer:"O(n²)"},
+{q:"Finding max element in array?", options:["O(n²)","O(n)","O(log n)","O(1)"], answer:"O(n)"},
+{q:"Searching in sorted array using linear search?", options:["O(n)","O(log n)","O(n log n)","O(1)"], answer:"O(n)"},
+{q:"Finding min in unsorted array?", options:["O(n)","O(log n)","O(n²)","O(1)"], answer:"O(n)"},
+{q:"Fibonacci naive recursion?", options:["O(n)","O(2^n)","O(n²)","O(log n)"], answer:"O(2^n)"},
+{q:"Fibonacci DP?", options:["O(n)","O(2^n)","O(n²)","O(log n)"], answer:"O(n)"},
+{q:"Factorial recursive?", options:["O(n)","O(log n)","O(n²)","O(1)"], answer:"O(n)"},
+{q:"Finding all pairs in array?", options:["O(n²)","O(n)","O(log n)","O(1)"], answer:"O(n²)"},
+{q:"Accessing element in array?", options:["O(1)","O(n)","O(n²)","O(log n)"], answer:"O(1)"},
+{q:"Time complexity of push in stack?", options:["O(1)","O(n)","O(n²)","O(log n)"], answer:"O(1)"},
+{q:"Time complexity of enqueue in queue?", options:["O(1)","O(n)","O(n²)","O(log n)"], answer:"O(1)"},
+{q:"Deleting from stack?", options:["O(1)","O(n)","O(n²)","O(log n)"], answer:"O(1)"},
+{q:"Binary tree height for n nodes?", options:["O(log n)","O(n)","O(n²)","O(1)"], answer:"O(log n)"},
+{q:"Searching in BST?", options:["O(n)","O(log n)","O(n²)","O(1)"], answer:"O(log n)"},
+{q:"Insertion in BST?", options:["O(n)","O(log n)","O(n²)","O(1)"], answer:"O(log n)"},
+{q:"Deleting in BST?", options:["O(n)","O(log n)","O(n²)","O(1)"], answer:"O(log n)"},
+{q:"DFS on tree?", options:["O(V+E)","O(n²)","O(log n)","O(n)"], answer:"O(V+E)"},
+{q:"BFS on tree?", options:["O(V+E)","O(n²)","O(log n)","O(n)"], answer:"O(V+E)"},
+{q:"Time complexity of array sort using quicksort?", options:["O(n²)","O(n log n)","O(n)","O(log n)"], answer:"O(n log n)"},
+{q:"Heapify in heap?", options:["O(log n)","O(n)","O(n²)","O(1)"], answer:"O(log n)"},
+{q:"Building heap?", options:["O(n)","O(log n)","O(n²)","O(1)"], answer:"O(n)"},
+{q:"Searching in hash table?", options:["O(1)","O(n)","O(n²)","O(log n)"], answer:"O(1)"},
+{q:"Chaining in hash table worst case?", options:["O(1)","O(n)","O(n²)","O(log n)"], answer:"O(n)"},
+{q:"Dynamic programming matrix chain multiplication?", options:["O(n³)","O(n²)","O(n)","O(log n)"], answer:"O(n³)"},
+{q:"Longest common subsequence?", options:["O(n*m)","O(n²)","O(n)","O(log n)"], answer:"O(n*m)"},
+{q:"Knapsack 0/1 DP?", options:["O(n²)","O(n*W)","O(n)","O(log n)"], answer:"O(n*W)"},
+{q:"Fractional knapsack greedy?", options:["O(n log n)","O(n²)","O(n)","O(log n)"], answer:"O(n log n)"},
+{q:"Activity selection greedy?", options:["O(n log n)","O(n²)","O(n)","O(log n)"], answer:"O(n log n)"},
+{q:"Job sequencing greedy?", options:["O(n log n)","O(n²)","O(n)","O(log n)"], answer:"O(n log n)"},
+{q:"Dijkstra using min heap?", options:["O(E log V)","O(V²)","O(E²)","O(V log E)"], answer:"O(E log V)"},
+{q:"Kruskal MST?", options:["O(E log V)","O(V²)","O(E²)","O(V log E)"], answer:"O(E log V)"},
+{q:"Prim MST using min heap?", options:["O(E log V)","O(V²)","O(E²)","O(V log E)"], answer:"O(E log V)"},
+{q:"Time complexity of recursive factorial?", options:["O(n)","O(1)","O(n²)","O(log n)"], answer:"O(n)"},
+{q:"Binary search recursive?", options:["O(log n)","O(n)","O(n²)","O(1)"], answer:"O(log n)"},
+{q:"Bubble sort best case?", options:["O(n)","O(n²)","O(n log n)","O(1)"], answer:"O(n)"},
+{q:"Insertion sort worst case?", options:["O(n)","O(n²)","O(n log n)","O(1)"], answer:"O(n²)"},
+{q:"Quick sort worst case?", options:["O(n²)","O(n log n)","O(n)","O(log n)"], answer:"O(n²)"},
+{q:"Merge sort best case?", options:["O(n log n)","O(n²)","O(n)","O(log n)"], answer:"O(n log n)"},
+{q:"Linear search best case?", options:["O(1)","O(n)","O(log n)","O(n²)"], answer:"O(1)"},
+{q:"DFS on graph?", options:["O(V+E)","O(V²)","O(n)","O(log n)"], answer:"O(V+E)"},
+{q:"BFS on graph?", options:["O(V+E)","O(V²)","O(n)","O(log n)"], answer:"O(V+E)"},
+{q:"Topological sort?", options:["O(V+E)","O(V²)","O(n)","O(log n)"], answer:"O(V+E)"},
+{q:"Bellman-Ford?", options:["O(VE)","O(E log V)","O(V²)","O(E²)"], answer:"O(VE)"},
+{q:"Floyd Warshall?", options:["O(V³)","O(E log V)","O(V²)","O(E²)"], answer:"O(V³)"},
+{q:"Heap insert?", options:["O(log n)","O(n)","O(1)","O(n²)"], answer:"O(log n)"},
+{q:"Heap extract-min?", options:["O(log n)","O(n)","O(1)","O(n²)"], answer:"O(log n"},
+{q:"Stack push?", options:["O(1)","O(n)","O(log n)","O(n²)"], answer:"O(1)"},
+{q:"Queue enqueue?", options:["O(1)","O(n)","O(log n)","O(n²)"], answer:"O(1)"},
+{q:"Queue dequeue?", options:["O(1)","O(n)","O(log n)","O(n²)"], answer:"O(1)"},
+{q:"Graph adjacency list?", options:["O(V+E)","O(V²)","O(n)","O(E)"], answer:"O(V+E)"},
+{q:"Graph adjacency matrix?", options:["O(V²)","O(V+E)","O(n)","O(E)"], answer:"O(V²)"},
+{q:"Searching unsorted array?", options:["O(n)","O(log n)","O(n log n)","O(1)"], answer:"O(n)"},
+{q:"Searching sorted array using binary?", options:["O(n)","O(log n)","O(n²)","O(1)"], answer:"O(log n)"},
+{q:"Jump search complexity?", options:["O(√n)","O(n)","O(n log n)","O(1)"], answer:"O(√n)"},
+{q:"Interpolation search?", options:["O(log log n)","O(n)","O(n log n)","O(1)"], answer:"O(log log n)"},
+{q:"Counting sort?", options:["O(n+k)","O(n²)","O(n log n)","O(n)"], answer:"O(n+k)"},
+{q:"Radix sort?", options:["O(d*(n+k))","O(n²)","O(n log n)","O(n)"], answer:"O(d*(n+k))"},
+{q:"Bucket sort?", options:["O(n+k)","O(n²)","O(n log n)","O(n)"], answer:"O(n+k)"},
+{q:"DFS recursive stack space?", options:["O(V)","O(E)","O(log n)","O(1)"], answer:"O(V)"},
+{q:"BFS queue space?", options:["O(V)","O(E)","O(log n)","O(1)"], answer:"O(V)"},
+{q:"Prim MST array?", options:["O(V²)","O(E log V)","O(V log E)","O(E²)"], answer:"O(V²)"},
+{q:"Dijkstra adjacency matrix?", options:["O(V²)","O(E log V)","O(V+E)","O(E²)"], answer:"O(V²)"},
+{q:"Fibonacci recursive stack?", options:["O(n)","O(2^n)","O(n²)","O(log n)"], answer:"O(n)"},
+{q:"Binary search iterative?", options:["O(log n)","O(n)","O(n²)","O(1)"], answer:"O(log n)"}
+];
+
+let questions=[], index=0, score=0, TOTAL=10;
+let answered=false, autoNextTimeout;
+let questionState = [];
+
+// Back button function
+function goBack() {
+    window.history.back();
+}
+
+function startGame(){
+    TOTAL = Number(document.getElementById("totalQuestions").value);
+    questions = [...allQuestions].sort(()=>Math.random()-0.5).slice(0,TOTAL);
+    index=0; score=0;
+    questionState = questions.map(q => ({selected:null, answered:false, correct:false}));
+    document.getElementById("startScreen").style.display="none";
+    document.getElementById("quizScreen").style.display="block";
+    loadQuestion();
+}
+
+function loadQuestion(){
+    clearTimeout(autoNextTimeout);
+    answered = questionState[index].answered;
+    let q = questions[index];
+    document.getElementById("qno").innerText=`Question ${index+1} / ${TOTAL}`;
+    document.getElementById("question").innerText = q.q;
+
+    let html = "";
+    q.options.forEach(opt=>{html += `<div class="option" onclick="selectOption(this)">${opt}</div>`;});
+    document.getElementById("options").innerHTML = html;
+    document.getElementById("score").innerText = `Score: ${score}`;
+    document.getElementById("prev").style.display = index>0 ? "block" : "none";
+    document.getElementById("next").style.display = index<TOTAL-1 ? "block" : "none";
+
+    const sel = questionState[index].selected;
+    const correct = q.answer;
+    if(sel){
+        const optionEls = document.querySelectorAll(".option");
+        optionEls.forEach(o=>{
+            if(o.innerText === sel) o.classList.add("selected");
+            if(questionState[index].answered){
+                if(sel === correct && o.innerText===correct) o.classList.add("correct");
+                if(sel !== correct){
+                    if(o.innerText === sel) o.classList.add("wrong");
+                    if(o.innerText === correct) o.classList.add("correct");
+                }
+                o.style.pointerEvents="none";
+            }
+        });
+    }
+}
+
+function selectOption(el){
+    if(answered) return;
+    document.querySelectorAll(".option").forEach(o=>o.classList.remove("selected"));
+    el.classList.add("selected");
+    questionState[index].selected = el.innerText;
+}
+
+function submitAnswer(){
+    if(answered || !questionState[index].selected) return;
+    answered = true;
+    let sel = questionState[index].selected;
+    let correct = questions[index].answer;
+    questionState[index].answered = true;
+    questionState[index].correct = (sel === correct);
+
+    const el = [...document.querySelectorAll(".option")].find(o=>o.innerText===sel);
+
+    if(sel === correct){
+        setTimeout(()=>el.classList.add("correct"), 300);
+        score++;
+    } else {
+        el.classList.add("wrong");
+        setTimeout(()=>{
+            [...document.querySelectorAll(".option")].forEach(o=>{
+                if(o.innerText === correct) o.classList.add("correct");
+            });
+        }, 300);
+    }
+
+    document.querySelectorAll(".option").forEach(o=>o.style.pointerEvents="none");
+    document.getElementById("score").innerText = `Score: ${score}`;
+    autoNextTimeout = setTimeout(()=>nextQuestion(), 800);
+}
+
+function nextQuestion(){
+    if(index<TOTAL-1){ index++; loadQuestion(); } else { showResult(); }
+}
+
+function prevQuestion(){
+    if(index>0){ index--; loadQuestion(); }
+}
+
+function showResult(){
+    document.getElementById("quizScreen").innerHTML = `
+    <h2>🎉 Quiz Completed</h2>
+    <h3>Score: ${score} / ${TOTAL}</h3>
+    <p>${score>=TOTAL*0.7 ? "🔥 Excellent!" : "📘 Keep Practicing!"}</p>
+    <button onclick="location.reload()">Play Again</button>`;
+}

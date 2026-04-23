@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>📈 Time Complexity Studio | Manual Input</title>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome 6 (for back button icon) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="Notations.css">
+
+</head>
+<body>
+
+<!-- 🔴 RED BACK BUTTON (fixed top-left, returns to main dashboard) -->
+<button class="back-red-btn" id="globalBackBtn">
+  <i class="fas fa-arrow-left"></i> BACK
+</button>
+
+<div class="container">
+  <div class="hero">
+    <h1>⚔️ TIME COMPLEXITY STUDIO</h1>
+    <p>pure theoretical curves · manual dataset size (5 … 2000)</p>
+  </div>
+
+  <!-- only manual number input -->
+  <div class="control-panel">
+    <div class="size-control">
+      <label>📐 Max dataset size (N) :</label>
+      <input type="number" id="maxNSize" min="5" max="2000" step="1" value="500">
+      <div class="badge-note">✍️ type any value 5–2000</div>
+    </div>
+  </div>
+
+  <div class="graph-card">
+    <canvas id="complexityChart" width="1000" height="500" style="width:100%; height:auto; max-height:520px"></canvas>
+  </div>
+
+  <div class="info-card">
+    <div class="complexity-guide">
+      <span style="color:#4ade80;">O(1)</span>
+      <span style="color:#38bdf8;">O(log n)</span>
+      <span style="color:#facc15;">O(n)</span>
+      <span style="color:#c084fc;">O(n log n)</span>
+      <span style="color:#f97316;">O(n²)</span>
+      <span style="color:#fb7185;">O(2ⁿ) capped*</span>
+    </div>
+    <div class="legend-note">
+      📈 <strong>pure deterministic curves</strong> — enter your own N to see how complexities scale
+    </div>
+  </div>
+  <footer>
+    🧪 manual input only | range 5–2000 | exponential capped at 2¹⁶ (65,536) for readability
+  </footer>
+</div>
+
+  <script src="Notations.js"></script>
+
+</body>
+</html>

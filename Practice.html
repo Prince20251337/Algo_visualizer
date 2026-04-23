@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Algo Architect | 50 Level XL Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;700&family=Orbitron:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Practice.css">
+
+</head>
+<body>
+
+<button class="back-btn-red" onclick="goBack()">
+    ← BACK
+</button>
+
+<header>
+    <div class="header-content">
+        <button class="btn-ui" onclick="changeLvl(-1)">PREV_SYSTEM</button>
+        <div class="logo" id="lvl-info">CORE_INIT...</div>
+        <button class="btn-ui" onclick="changeLvl(1)">NEXT_SYSTEM</button>
+    </div>
+</header>
+
+<div class="main-layout">
+    <div class="bank">
+        <div class="bank-header">FRAGMENT_BANK</div>
+        <div id="bank"></div>
+    </div>
+
+    <div class="workspace">
+        <div class="section-box">
+            <div class="section-label"><span>[01] LOGIC_STREAM</span> <button class="btn-ui" onclick="checkLogic()">VALIDATE_LOGIC</button></div>
+            <div id="editor"></div>
+        </div>
+
+        <div class="section-box" id="mcq-area" style="opacity:0.2; pointer-events:none;">
+            <div class="section-label"><span>[02] ASYMPTOTIC_PROFILER</span> <button class="btn-ui" onclick="checkComp()">ANALYZE_SPEED</button></div>
+            <div class="opt-grid" id="opt-container"></div>
+        </div>
+
+        <button class="btn-big" id="run-btn" disabled onclick="completeLvl()">INITIALIZE_ALGORITHM</button>
+    </div>
+</div>
+
+<script src="Practice.js"></script>
+
+</body>
+</html>

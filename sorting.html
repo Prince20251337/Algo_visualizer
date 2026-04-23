@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Algo Viz – Battle Arena | Step-by-Step Mode</title>
+    <link rel="stylesheet" href="sorting.css">
+</head>
+<body>
+
+<button class="back-btn" onclick="history.back()">← Back</button>
+
+<h1>⚔️ NUMERIC SORT BATTLE</h1>
+
+<div class="controls">
+    <select id="leftAlgo">
+        <option value="bubble">Bubble Sort</option>
+        <option value="selection">Selection Sort</option>
+        <option value="insertion">Insertion Sort</option>
+        <option value="merge">Merge Sort</option>
+        <option value="quick" selected>Quick Sort</option>
+    </select>
+    <span style="font-weight:bold; color:#f472b6;">VS</span>
+    <select id="rightAlgo">
+        <option value="bubble">Bubble Sort</option>
+        <option value="selection">Selection Sort</option>
+        <option value="insertion">Insertion Sort</option>
+        <option value="merge">Merge Sort</option>
+        <option value="quick" selected>Quick Sort</option>
+    </select>
+    <div class="speed-label">
+        <span>⚡ Speed</span>
+        <input type="range" id="speedRange" min="1" max="100" value="75">
+    </div>
+    <div class="step-mode-group">
+        <input type="checkbox" id="stepModeCheckbox">
+        <label for="stepModeCheckbox">⏯️ Step Mode</label>
+        <button id="stepBtn" class="step-btn" disabled>▶ Next Step</button>
+    </div>
+    <button onclick="generateRandomArray()">🎲 RANDOM ARRAY</button>
+    <button onclick="startBattle()" style="background:#4ade80; color:#0a2f1f;">⚔️ START BATTLE</button>
+    <button class="stop-btn" onclick="stopAll()">⏹️ STOP</button>
+</div>
+
+<div class="custom-area">
+    <span>✏️ Custom array (numbers, comma separated):</span>
+    <input type="text" id="customArrayInput" class="custom-input" placeholder="e.g., 42, 17, 8, 99, 23, 5, 12, 77">
+    <button id="applyCustomBtn" onclick="applyCustomArray()">📥 Apply to both</button>
+    <span style="font-size:12px; opacity:0.8;">(min 3, max 28 numbers)</span>
+</div>
+
+<div class="container">
+    <div class="arena-box" id="boxL">
+        <div class="winner-badge" id="badgeL">🏆 WINNER!</div>
+        <h3 id="nameL">Algorithm A</h3>
+        <div id="arenaL" class="arena"></div>
+        <div class="how-it-works" id="stateL">--</div>
+        <div class="complexity-box">⏱️ Time: <span id="timeL">--</span></div>
+        <div class="stats">
+            <span>🔁 Comparisons: <span id="compL">0</span></span>
+            <span>🔄 Swaps / Moves: <span id="swapL">0</span></span>
+        </div>
+    </div>
+
+    <div class="arena-box" id="boxR">
+        <div class="winner-badge" id="badgeR">🏆 WINNER!</div>
+        <h3 id="nameR">Algorithm B</h3>
+        <div id="arenaR" class="arena"></div>
+        <div class="how-it-works" id="stateR">--</div>
+        <div class="complexity-box">⏱️ Time: <span id="timeR">--</span></div>
+        <div class="stats">
+            <span>🔁 Comparisons: <span id="compR">0</span></span>
+            <span>🔄 Swaps / Moves: <span id="swapR">0</span></span>
+        </div>
+    </div>
+</div>
+
+<script src="sorting.js"></script>
+
+</body>
+</html>
